@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADAPT v32 | Final</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+        <nav class="sidebar">
+            <h2>ADAPT <span>Final</span></h2>
+            <div class="section">
+                <label>Data</label>
+                <input type="file" id="file_input" onchange="uploadData()">
+            </div>
+            <div class="section hidden" id="params">
+                <label>Scope</label>
+                <select id="prod"></select>
+                
+                <label>Settings</label>
+                <div class="inp-group">
+                    <label class="sub">Growth (%)</label>
+                    <input type="number" id="growth" value="15">
+                    <small>Expected YoY Market Growth</small>
+                </div>
+                <div class="inp-group">
+                    <label class="sub">Holding Cost (%)</label>
+                    <input type="number" id="h_cost" value="20">
+                    <small>Capital + Rent + Risk</small>
+                </div>
+                <div class="inp-group">
+                    <label class="sub">Ordering Cost (â‚¹)</label>
+                    <input type="number" id="o_cost" value="1500">
+                    <small>Admin + Processing per PO</small>
+                </div>
+                
+                <button onclick="runSim()" class="btn-run">RUN STRATEGY</button>
+            </div>
+        </nav>
+        <main>
+            <div id="output" class="hidden">
+                <div class="grid-2">
+                    <div class="card"><h4>Forecast Battle</h4><canvas id="fcChart"></canvas></div>
+                    <div class="card"><h4>Channel Mix</h4><canvas id="allocChart"></canvas></div>
+                </div>
+                <div class="grid-2">
+                    <div class="card"><h4>Profit Waterfall</h4><canvas id="waterfallChart"></canvas></div>
+                    <div class="card"><h4>Inventory Costs</h4><canvas id="invChart"></canvas></div>
+                </div>
+                <div class="paper" id="report_html"></div>
+            </div>
+        </main>
+    </div>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
